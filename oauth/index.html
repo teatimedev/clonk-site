@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Back to clonk</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main style="text-align:center;padding-top:20vh">
+<h1>Back to clonk…</h1>
+<p id="msg">Taking you back to the app.</p>
+<p><a id="back" href="clonk://oauth">Open clonk</a></p>
+</main>
+<script>
+// A service that only accepts https sign-in return addresses sends you here; this hands the code straight to the app.
+// Nothing is stored or sent anywhere else: the code is only useful to the app that started the sign-in (PKCE).
+var target = "clonk://oauth" + location.search;
+document.getElementById("back").href = target;
+if (!location.search) document.getElementById("msg").textContent = "Nothing to hand back.";
+else location.replace(target);
+</script>
+</body>
+</html>
